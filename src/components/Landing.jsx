@@ -38,6 +38,7 @@ const Landing = () => {
   const textStyles = {
     opacity: loading ? 0 : 1, // Establece la opacidad inicial del texto
     transition: 'opacity 0.5s ease-in-out',
+    fontFamily:'robotoBold',
   };
 
   return (
