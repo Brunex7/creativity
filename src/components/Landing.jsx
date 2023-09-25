@@ -51,7 +51,7 @@ const Landing = () => {
           style={sideImageStyle}
         />
       </Container>
-      <Typography variant="h2" color="#fff" style={textStyles}>
+      <Typography variant="h3" color="#fff" style={textStyles}>
         Creativity.
       </Typography>
     </Box>
