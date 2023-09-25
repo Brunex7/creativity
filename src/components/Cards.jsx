@@ -28,7 +28,6 @@ const Cards = () => {
   };
 
   const containerStyle = {
-    width:'900px',
     margin: '30px 0 30px 0',
     display: 'flex',
     flexDirection: 'column',
@@ -81,7 +80,7 @@ const Cards = () => {
   return (
       <Box id ='project' sx={containerStyle}>
         <div ref={ref} >
-          <Grid container spacing={30}>
+          <Grid container spacing={2}>
             {info.map((items, index) => (
               <Grid item key={index} xs={12} sm={6} md={4}>
                   <Card style={cardStyle}>
