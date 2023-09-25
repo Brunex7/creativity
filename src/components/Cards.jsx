@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material';
 import info from '../media/info';
 import { useInView } from 'react-intersection-observer';
+import InfoIcon from '@mui/icons-material/Info';
+import LaunchIcon from '@mui/icons-material/Launch';
 
 const Cards = () => {
 
@@ -14,13 +16,21 @@ const Cards = () => {
     rootMargin: '-200px 0px', 
   });
 
+  const [showDescription, setShowDescription] = useState({});
+
+  const toggleDescription = (index) => {
+    setShowDescription((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index] || false,
+    }));
+  };
+
   const cardStyle = {
     backgroundColor: '#220b4e',
     width:'350px',
     height:'450px',
     padding:'5px',
     animation: 'fade-in 3.0s ease-in-out',
-    borderRadius: '10px',
     position: 'relative',
     transform: inView ? 'translateY(0)' : 'translateY(100px)', 
     opacity: inView ? 1 : 0,
@@ -32,49 +42,65 @@ const Cards = () => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '0 10px 0 10px', 
   };
 
-  const descriptionStyle = {
-    position: 'absolute',
-    width: '90%',
-    padding: '0 0 0 18px',
-    textAlign: 'left',
+  const cardContentStyle = {
+    backgroundColor: 'rgba(54, 54, 54, 0.685)',
     color: 'white',
-    fontSize:'12px'
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    padding: '2px', 
+    zIndex: 1,
+    width: '92%',
+    height: '50%', 
+    borderRadius:'10px',
+    backdropFilter: 'blur(10px)',
+    display:'flex',
+    alignItems:'center',
+    flexDirection:'column',
+    justifyContent:'center',
+    padding:'5px'
   };
+
+  const hiddenCardContent = {
+    display:'none',
+  }
 
   const buttonStyle = {
-    backgroundColor: '#555555e2',
-    width:'30%',
+    backgroundColor: 'none',
     color: '#ffffff',
-    fontSize:'12px',
     borderRadius:'5px',
-    marginTop:'-50px',
-    marginLeft:'10px',
+    marginTop:'-8px',
     '&:hover': {
       backgroundColor: '#220b4e',
-      color: '#ffffff',
+      color: '#adadad',
     },
   };
 
   const imageContainerStyle = {
     position: 'relative',
     overflow: 'hidden',
-    borderRadius: ' 10px 10px 0 0',
   };
 
   const imageStyle = {
     width: '100%',
-    height: '450px',
+    height: '420px',
     objectFit:'cover',
+  };
+
+  const imageStyleD = {
+    width: '60px',
+    height: '60px',
+    objectFit:'cover',
+    borderRadius:'5px',
   };
 
   const contButtom = {
     display:'flex',
-    padding:'0',
     alignItems:'center',
-    marginTop:'5px'
+    marginLeft:'-30px'
   }
 
   return (
@@ -92,11 +118,16 @@ const Cards = () => {
                     alt="Project Image"
                   />
                 </div>
-                  <CardContent style={descriptionStyle}>
-                    <Typography variant="body4" color="white">
-                      {items.description}
-                    </Typography>
-                  </CardContent>
+                <CardContent style={showDescription[index] ? cardContentStyle : hiddenCardContent}>
+                  <CardMedia 
+                    style={imageStyleD}
+                    component="img"
+                    image={items.image}
+                    alt="Project Image"
+                  />
+                  <Typography variant='h3' align='left'>{items.title}</Typography>
+                  <Typography variant="body4" align='center'>{items.description}</Typography>
+                </CardContent>
                   <CardActions sx={contButtom}>
                   <Button
                   href={items.deployLink}
@@ -104,7 +135,10 @@ const Cards = () => {
                   rel="noopener noreferrer"
                   sx={ buttonStyle }
                   >
-                      Go to link
+                    <LaunchIcon />
+                  </Button>
+                  <Button onClick={() => toggleDescription(index)} sx={ buttonStyle }>
+                    <InfoIcon />
                   </Button>
                   </CardActions>
                 </Card>
