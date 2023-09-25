@@ -23,7 +23,7 @@ const Landing = () => {
   };
 
   const imageContainerStyle = {
-    width: loading ? '20%' : '0%',
+    width: loading ? '30%' : '0%',
     overflow: 'hidden',
     transition: 'width 0.5s ease-in-out',
   };

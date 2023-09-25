@@ -11,9 +11,6 @@ const Home = () => {
         <Navbar />
         <Filter />
         <Container >
-            <Typography variant="h4" component="div" style={{ marginTop: '20px' }}>
-                ENCONTRARAS HERRAMINETAS UTILES PARA MEJORAR TUS TRABAJO.
-            </Typography>
             <Cards />
         </Container>
     </Box>
