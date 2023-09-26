@@ -9,6 +9,7 @@ function Filter() {
         justifyContent:'space-between',          
         padding:'10px',
         alingItems:'center', 
+        marginTop:'60px',
     }
     
     return (

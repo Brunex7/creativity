@@ -3,7 +3,7 @@ import creativity from '../assets/react.svg';
 import { AppBar, Toolbar, useMediaQuery } from '@mui/material';
 
 function Navbar() {
-  const isMobile = useMediaQuery('(max-width: 600px)'); // Cambia el valor según tu necesidad
+  const isMobile = useMediaQuery('(max-width: 600px)');
 
   const imageStyle = {
     width: isMobile ? '10%' : '4%',
@@ -14,10 +14,13 @@ function Navbar() {
     background: '#220b4e',
     display: 'flex',
     justifyContent: 'center',
+    position: 'fixed',
+    top: 0,
+    width: '100%',
   };
 
   return (
-    <AppBar position="static" sx={styleBox}>
+    <AppBar sx={styleBox}>
       <Toolbar>
         <img
           id="side-image"
