@@ -1,23 +1,21 @@
+import React from 'react';
 import creativity from '../assets/react.svg';
-import { AppBar, Button, Container, Toolbar } from '@mui/material';
-
+import { AppBar, Toolbar, useMediaQuery } from '@mui/material';
 
 function Navbar() {
+  const isMobile = useMediaQuery('(max-width: 600px)'); // Cambia el valor según tu necesidad
 
-    const imageStyle = {
-        width:'4%',
-    }
+  const imageStyle = {
+    width: isMobile ? '10%' : '4%',
+    margin: 'auto',
+  };
 
-    const styleBox = {
-        background: '#220b4e',
-    }
+  const styleBox = {
+    background: '#220b4e',
+    display: 'flex',
+    justifyContent: 'center',
+  };
 
-    const conteButton ={
-        display: 'flex',
-        flexDirection:'row',
-        justifyContent:'flex-end'
-    }
-    
   return (
     <AppBar position="static" sx={styleBox}>
       <Toolbar>
@@ -27,10 +25,6 @@ function Navbar() {
           alt="Side Image"
           style={imageStyle}
         />
-        <Container sx={conteButton}>
-        <Button color="inherit">Home</Button>
-        <Button color="inherit">About</Button>
-        </Container>
       </Toolbar>
     </AppBar>
   );
