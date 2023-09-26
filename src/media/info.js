@@ -40,7 +40,7 @@ const info = [
       image: shots,
       title: 'Shots.so',
       description: 'Generador de Mockups increibles, utilizando imagenes de tus proyectos.',
-      deployLink: 'https://colors.muz.li/',
+      deployLink: 'https://shots.so/',
     },
 ];
 
