@@ -6,7 +6,6 @@ function Filter() {
     const conteButton ={
         display: 'flex',
         flexDirection:'row',
-        border:'2px solid #220b4e',
         padding:'10px',
     }
     

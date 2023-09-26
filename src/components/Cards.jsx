@@ -75,7 +75,7 @@ const Cards = () => {
     marginTop:'-8px',
     '&:hover': {
       backgroundColor: '#220b4e',
-      color: '#adadad',
+      color: '#a89bff',
     },
   };
 

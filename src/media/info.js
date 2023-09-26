@@ -3,6 +3,7 @@ import landingLove from '../assets/landingLove.png';
 import behance from '../assets/Behance.png';
 import muzliC from '../assets/muzliColors.png';
 import colors from '../assets/colors.png';
+import shots from '../assets/shots.so.png';
 
 const info = [
     {
@@ -33,6 +34,12 @@ const info = [
       image: colors,
       title: 'Colors',
       description: 'Generador super rapido de paletas de colores. Crea la combinacion perfecta o inspirate con las miles de combinaciones y esquemas.',
+      deployLink: 'https://colors.muz.li/',
+    },
+    {
+      image: shots,
+      title: 'Shots.so',
+      description: 'Generador de Mockups increibles, utilizando imagenes de tus proyectos.',
       deployLink: 'https://colors.muz.li/',
     },
 ];
