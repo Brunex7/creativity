@@ -1,6 +1,9 @@
 import freeFaces from '../assets/freeFaces.png';
 import landingLove from '../assets/landingLove.png';
 import behance from '../assets/Behance.png';
+import muzliC from '../assets/muzliColors.png';
+import colors from '../assets/colors.png';
+
 const info = [
     {
       image: freeFaces,
@@ -11,20 +14,26 @@ const info = [
     {
       image: landingLove,
       title: 'Landind Love',
-      description: 'A front-end development project focused solely on enhancing and practicing pure CSS styles and route flow.',
+      description: 'Landing Love es una pagina web donde podrás encontrar más de 600 paginas web super creativas donde te podrás inspirar y sacar ideas para tus proyectos.',
       deployLink: 'https://www.landing.love/',
     },
     {
       image: behance,
       title: 'Behance',
-      description: 'A front-end development project focused solely on enhancing and practicing pure CSS styles and route flow.',
+      description: 'Behance es la red creativa más grande del mundo para mostrar y descubrir trabajos creativos.',
       deployLink: 'https://www.behance.net/',
     },
     {
-      image: freeFaces,
-      title: 'Free Faces',
-      description: '(Logo Root) The design of the website is being finished at the moment it is not enabled.',
-      deployLink: 'https://www.freefaces.gallery/',
+      image: muzliC,
+      title: 'Muzli Colors',
+      description: 'Busca, descubre, crea y prueba las mejores paletas de colores para tus proyectos.',
+      deployLink: 'https://colors.muz.li/',
+    },
+    {
+      image: colors,
+      title: 'Colors',
+      description: 'Generador super rapido de paletas de colores. Crea la combinacion perfecta o inspirate con las miles de combinaciones y esquemas.',
+      deployLink: 'https://colors.muz.li/',
     },
 ];
 

@@ -45,7 +45,7 @@ const Cards = () => {
   };
 
   const cardContentStyle = {
-    backgroundColor: 'rgba(54, 54, 54, 0.685)',
+    backgroundColor: '#220b4ed3',
     color: 'white',
     position: 'absolute',
     top: '50%',
