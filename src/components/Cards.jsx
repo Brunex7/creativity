@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material';
-import info from '../media/info';
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid,
+  Typography,
+} from '@mui/material';
 import { useInView } from 'react-intersection-observer';
 import InfoIcon from '@mui/icons-material/Info';
 import LaunchIcon from '@mui/icons-material/Launch';
+import info from '../media/info';
 
 const Cards = () => {
 
@@ -35,6 +45,7 @@ const Cards = () => {
     transform: inView ? 'translateY(0)' : 'translateY(100px)', 
     opacity: inView ? 1 : 0,
     transition: 'transform 1s, opacity 1s',
+    perspective: '1000px',
   };
 
   const containerStyle = {
@@ -45,28 +56,21 @@ const Cards = () => {
   };
 
   const cardContentStyle = {
-    backgroundColor: '#220b4ed3',
+    backgroundColor: '#220b4e',
     color: 'white',
     position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    padding: '2px', 
-    zIndex: 1,
-    width: '92%',
-    height: '50%', 
-    borderRadius:'10px',
+    top: '0',
+    left: '0',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    transform: 'rotateY(0deg)',
+    backfaceVisibility: 'hidden',
+    borderRadius: '10px',
     backdropFilter: 'blur(10px)',
-    display:'flex',
-    alignItems:'center',
-    flexDirection:'column',
-    justifyContent:'center',
-    padding:'5px'
+    transition: 'transform 0.5s',
   };
-
-  const hiddenCardContent = {
-    display:'none',
-  }
 
   const buttonStyle = {
     backgroundColor: 'none',
@@ -91,10 +95,10 @@ const Cards = () => {
   };
 
   const imageStyleD = {
-    width: '60px',
-    height: '60px',
+    width: '90px',
+    height: '90px',
     objectFit:'cover',
-    borderRadius:'5px',
+    borderRadius:'10px',
   };
 
   const contButtom = {
@@ -118,17 +122,37 @@ const Cards = () => {
                     alt="Project Image"
                   />
                 </div>
-                <CardContent style={showDescription[index] ? cardContentStyle : hiddenCardContent}>
-                  <CardMedia 
-                    style={imageStyleD}
-                    component="img"
-                    image={items.image}
-                    alt="Project Image"
-                  />
-                  <Typography variant='h3' align='left'>{items.title}</Typography>
-                  <Typography variant="body4" align='center'>{items.description}</Typography>
+                <CardContent 
+                  style={
+                    showDescription[index] 
+                    ? cardContentStyle 
+                    : { ...cardContentStyle, 
+                    transform: 'rotateY(180deg)' 
+                  }}
+                >
+                  {showDescription[index] ? (
+                  <div>
+                    <CardMedia 
+                      style={imageStyleD}
+                      component="img"
+                      image={items.image}
+                      alt="Project Image"
+                    />
+                    <Typography variant='h3' align='left'>{items.title}</Typography>
+                    <Typography variant="body4" align='center'>{items.description}</Typography>
+                  </div>
+                    ) : (
+                    <div style={imageContainerStyle}>
+                      <CardMedia
+                        style={imageStyle}
+                        component="img"
+                        image={items.image}
+                        alt="Project Image"
+                      />
+                    </div>
+                  )}
                 </CardContent>
-                  <CardActions sx={contButtom}>
+                <CardActions sx={contButtom}>
                   <Button
                   href={items.deployLink}
                   target="_blank"
@@ -140,7 +164,7 @@ const Cards = () => {
                   <Button onClick={() => toggleDescription(index)} sx={ buttonStyle }>
                     <InfoIcon />
                   </Button>
-                  </CardActions>
+                </CardActions>
                 </Card>
               </Grid>
             ))}
