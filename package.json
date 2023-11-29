@@ -14,9 +14,11 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.9",
     "@mui/material": "^5.14.10",
+    "@mui/system": "^5.14.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-intersection-observer": "^9.5.2"
+    "react-intersection-observer": "^9.5.2",
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

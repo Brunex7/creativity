@@ -1,22 +1,22 @@
-import React from 'react';
-import creativity from '../assets/react.svg';
-import { AppBar, Toolbar, useMediaQuery } from '@mui/material';
+import React from "react";
+import creativity from "../assets/react.svg";
+import { AppBar, Toolbar, useMediaQuery } from "@mui/material";
 
 function Navbar() {
-  const isMobile = useMediaQuery('(max-width: 600px)');
+  const isMobile = useMediaQuery("(max-width: 600px)");
 
   const imageStyle = {
-    width: isMobile ? '10%' : '4%',
-    margin: 'auto',
+    width: isMobile ? "10%" : "4%",
+    margin: "auto",
   };
 
   const styleBox = {
-    background: '#220b4e',
-    display: 'flex',
-    justifyContent: 'center',
-    position: 'fixed',
+    background: "#220b4e",
+    display: "flex",
+    justifyContent: "center",
+    position: "fixed",
     top: 0,
-    width: '100%',
+    width: "100%",
   };
 
   return (

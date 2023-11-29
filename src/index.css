@@ -5,11 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #e8e4ff;
+  background-color: #f5f5f5;
 }
 
 body {
-  scrollbar-color: #220b4e #e8e4ff;
+  scrollbar-color: #220b4e #f5f5f5;
   scrollbar-width: thin; 
 }
 
@@ -22,7 +22,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 body::-webkit-scrollbar-track {
-  background-color: #e8e4ff; 
+  background-color: #f5f5f5; 
 }
 
 @font-face {

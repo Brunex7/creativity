@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Landing from './components/Landing';
 import Home from './components/Home';
+import Navbar from './components/Nav';
 
 function App() {
 
@@ -17,7 +18,11 @@ function App() {
       {showLanding ? (
         <Landing />
       ):(
-        < Home />
+        <div>
+          <Navbar />
+          < Home />
+        </div>
+
       )}
     </div>
   )
