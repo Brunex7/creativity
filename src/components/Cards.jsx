@@ -1,50 +1,24 @@
 import React, { useEffect, useState } from "react";
 import {
-  Box,
   Button,
   Card,
+  CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
-  Container,
   Grid,
   Typography,
 } from "@mui/material";
 import { useInView } from "react-intersection-observer";
-import InfoIcon from "@mui/icons-material/Info";
 import LaunchIcon from "@mui/icons-material/Launch";
-import info from "../media/info";
+import CloseIcon from '@mui/icons-material/Close';
 
-const Cards = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+const Cards = ({items, index, toggleDescription, showDescription}) => {
 
   const [ref, inView] = useInView({
     triggerOnce: false,
     rootMargin: "-200px 0px",
   });
-
-  const [showDescription, setShowDescription] = useState({});
-
-  const toggleDescription = (index) => {
-    setShowDescription((prevState) => ({
-      ...prevState,
-      [index]: !prevState[index] || false,
-    }));
-  };
-
-  const [currentPage, SetCurrentPage] = useState(0);
-  const projectsPages = 6;
-
-  const totalPages = Math.ceil(info.length / projectsPages);
-  const indexOfLastProject = (currentPage + 1) * projectsPages;
-  const indexOfFirstProject = indexOfLastProject - projectsPages;
-  const currentProjects = info.slice(indexOfFirstProject, indexOfLastProject);
-
-  const paginate = (pageNumber) => {
-    SetCurrentPage(pageNumber)
-  };
 
   const cardStyle = {
     backgroundColor: "#220b4e",
@@ -58,13 +32,6 @@ const Cards = () => {
     opacity: inView ? 1 : 0,
     transition: "transform 1s, opacity 1s",
     perspective: "1000px",
-  };
-
-  const containerStyle = {
-    margin: "30px 30px 0",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
   };
 
   const cardContentStyle = {
@@ -87,11 +54,12 @@ const Cards = () => {
   const buttonStyle = {
     backgroundColor: "none",
     color: "#ffffff",
-    borderRadius: "5px",
-    marginTop: "-8px",
+    borderRadius: "0 0 5px 5px",
+    width:'100%',
+    marginTop:'5px',
     "&:hover": {
-      backgroundColor: "#220b4e",
-      color: "#a89bff",
+      backgroundColor: "#a89bff",
+      color: "#220b4e",
     },
   };
 
@@ -102,7 +70,7 @@ const Cards = () => {
 
   const imageStyle = {
     width: "100%",
-    height: "420px",
+    height: "410px",
     borderRadius:'5px',
     objectFit: "cover",
   };
@@ -114,27 +82,30 @@ const Cards = () => {
     borderRadius: "10px",
   };
 
-  const contButtom = {
-    display: "flex",
-    alignItems: "center",
-    marginLeft: "-30px",
-  };
+  const closeButton ={
+    left:'250px',
+    top:'30px',
+    backgroundColor: "none",
+    color: "#ffffff",
+    "&:hover": {
+      backgroundColor: "#220b4e",
+      color: "#a89bff",
+    },
+  }
 
   return (
-    <Box id="project" sx={containerStyle}>
       <div ref={ref}>
-        <Grid container spacing={4}>
-          {currentProjects.map((items, index) => (
-            <Grid item key={index} xs={12} sm={6} md={4}>
-              <Card style={cardStyle}>
+              <Card  style={cardStyle}>
+                <CardActionArea  onClick={() => toggleDescription(index)}>
                 <div style={imageContainerStyle}>
                   <CardMedia
                     style={imageStyle}
                     component="img"
                     image={items.image}
                     alt="Project Image"
-                  />
+                    />
                 </div>
+                </CardActionArea>
                 <CardContent
                   style={
                     showDescription[index]
@@ -143,7 +114,13 @@ const Cards = () => {
                   }
                 >
                   {showDescription[index] ? (
-                    <div>
+                    <div> 
+                       <Button
+                       onClick={() => toggleDescription(index)}
+                       sx={closeButton}
+                      >
+                        <CloseIcon />
+                      </Button>
                       <CardMedia
                         style={imageStyleD}
                         component="img"
@@ -168,7 +145,6 @@ const Cards = () => {
                     </div>
                   )}
                 </CardContent>
-                <CardActions sx={contButtom}>
                   <Button
                     href={items.deployLink}
                     target="_blank"
@@ -177,34 +153,8 @@ const Cards = () => {
                   >
                     <LaunchIcon />
                   </Button>
-                  <Button
-                    onClick={() => toggleDescription(index)}
-                    sx={buttonStyle}
-                  >
-                    <InfoIcon />
-                  </Button>
-                </CardActions>
               </Card>
-            </Grid>
-          ))}
-        </Grid>
-        <div style={{ marginTop: '20px', display:'flex', justifyContent:'center' }}> 
-          {Array.from({ length: totalPages}, (_, index) => (
-            <Button key={index} onClick={() => paginate(index)}
-            sx={{
-              margin:'0 5px',
-              backgroundColor: currentPage === index ? '#220b4e' : '#d4cdff',"&:hover": {
-                backgroundColor: '#a89bff',
-                color: "#d4cdff",
-              },
-              color: currentPage === index ? '#ffffff' : '#220b4e',
-            }}>
-              {index + 1}
-            </Button>
-          ))}
         </div>
-      </div>
-    </Box>
   );
 };
 
